@@ -1,0 +1,13 @@
+{
+  "version": "5.9.2",
+  "windows": {
+    "url": "downloads/Vyntra-Setup.exe",
+    "sha256": "e04958a3b93a00e0791af4fbda8e90365937a30c2e6591748f9624bbb313d355",
+    "size": "90 MB"
+  },
+  "android": {
+    "url": "downloads/Vyntra.apk",
+    "sha256": "7059b92ce8cfe9d5d712c55b2d00fc335b061ea421740dbacb4d179190fb3290",
+    "size": "3,1 MB"
+  }
+}

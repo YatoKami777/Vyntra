@@ -1,0 +1,32 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090c1b"><title>Vyntra — Converse. Jogue. Conecte.</title><meta name="description" content="Vyntra, seu espaço para chat, chamadas e comunidades. Baixe para Windows e Android."><style>
+:root{color-scheme:dark;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;color:#eff5ff;background:#080c1c}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 10%,#44368e70,transparent 36%),radial-gradient(ellipse at 89% 78%,#005a8070,transparent 38%),#080c1c}header{max-width:1140px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid #ffffff1b}a{color:inherit}header img{height:42px;max-width:150px;object-fit:contain}header a{color:#b0bddd;text-decoration:none}.wrap{max-width:1140px;margin:auto;padding:72px 24px 60px}.eyebrow{color:#8befff;font-size:13px;letter-spacing:.17em;font-weight:800}h1{font-size:clamp(45px,7vw,86px);line-height:1.07;letter-spacing:-.065em;margin:18px 0;max-width:900px}h1 span{background:linear-gradient(95deg,#65e4ff,#ab86ff 60%,#f6a1ff);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:clamp(17px,2vw,21px);line-height:1.6;color:#b8c6e6;max-width:700px}.tags{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0 40px}.tag{border-radius:50px;border:1px solid #7384b94a;background:#18223d9c;padding:8px 14px;color:#e0ebff;font-size:13px}.downloads{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}.panel{padding:28px;border:1px solid #6979bd58;background:linear-gradient(145deg,#162547d9,#131327c9);border-radius:23px;box-shadow:0 16px 55px #0004}.platform{font-size:32px}.panel h2{font-size:26px;margin:10px 0}.panel p{min-height:45px;color:#becae5;line-height:1.5}.download{display:inline-flex;justify-content:center;align-items:center;border-radius:12px;min-width:180px;padding:14px 18px;background:linear-gradient(95deg,#20b9e7,#8465fa);font-weight:800;text-decoration:none;color:white;border:0}.download[aria-disabled=true]{background:#353d59;color:#c4cce0;cursor:not-allowed}.meta{font-size:12px;color:#a4b5d6;margin-top:13px;overflow-wrap:anywhere}section.info{margin-top:70px;padding:24px 0;border-top:1px solid #fff2}h3{font-size:24px}.info p{max-width:780px;color:#adbde0;line-height:1.6}footer{max-width:1140px;margin:auto;padding:20px 24px 42px;color:#8798bd;font-size:13px} .warning{color:#f1d395;font-size:13px} @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style></head><body><header><img src="assets/brand.webp" alt="Vyntra"><a href="#downloads">Downloads</a></header><main class="wrap"><div class="eyebrow">CONVERSAS SEM LIMITES ARTIFICIAIS</div><h1>Seu squad.<br><span>Seu universo.</span></h1><p class="lead">Converse por texto, participe de salas de voz, compartilhe sua tela e abra sua webcam. Vyntra para o seu grupo, no PC ou no celular.</p><div class="tags"><span class="tag">💬 Chats</span><span class="tag">🎙 Salas de voz</span><span class="tag">📷 Webcam</span><span class="tag">🖥 Compartilhamento</span><span class="tag">🔒 Servidor próprio</span></div><section id="downloads" class="downloads" aria-label="Downloads"><article class="panel"><div class="platform">🖥️</div><h2>Windows</h2><p>Instalador .exe para Windows 10/11, 64 bits.</p><a id="download-windows" class="download" href="downloads/Vyntra-Setup.exe" download>Baixar para Windows</a><div id="windows-meta" class="meta">V5.9.2 • 90 MB</div></article><article class="panel"><div class="platform">📱</div><h2>Android</h2><p>APK Android 8 ou superior, com chamadas e chat.</p><a id="download-android" class="download" href="downloads/Vyntra.apk" download>Baixar para Android</a><div id="android-meta" class="meta">V5.9.2 • 3,1 MB</div></article></section><section class="info"><h3>Aplicativo gratuito, servidor sob seu controle.</h3><p>O Vyntra oferece as funções do aplicativo sem assinatura. Para usar com seus amigos, você precisa de um servidor Vyntra acessível; hospedagem e tráfego podem ter custo.</p><p class="warning">Baixe apenas instaladores assinados e publicados por você. Verifique o SHA-256 disponibilizado junto a cada versão.</p></section></main><footer>Vyntra • Feito para jogar e conversar. Site de downloads independente.</footer><script>
+(async()=>{
+  // Valores padrão: funcionam mesmo abrindo o index.html direto (file://), sem servidor.
+  let data={version:"5.9.2",
+    windows:{url:"downloads/Vyntra-Setup.exe",sha256:"e04958a3b93a00e0791af4fbda8e90365937a30c2e6591748f9624bbb313d355",size:"90 MB"},
+    android:{url:"downloads/Vyntra.apk",sha256:"7059b92ce8cfe9d5d712c55b2d00fc335b061ea421740dbacb4d179190fb3290",size:"3,1 MB"}};
+  // Se hospedado, releases.json tem prioridade (permite atualizar sem mexer no HTML).
+  try{
+    const r=await fetch('./releases.json?v='+Date.now(),{cache:'no-store'});
+    if(r.ok){const j=await r.json();if(j&&typeof j==='object')data=j;}
+  }catch(e){console.info('Usando links padrão (releases.json indisponível).');}
+  const labels={windows:'Baixar para Windows',android:'Baixar para Android'};
+  for(const platform of ['windows','android']){
+    const link=document.getElementById('download-'+platform);
+    const meta=document.getElementById(platform+'-meta');
+    const item=data[platform];
+    if(!item||typeof item.url!=='string'||!item.url){
+      link.removeAttribute('href');link.setAttribute('aria-disabled','true');link.textContent='Em preparação';meta.textContent='Ainda não publicado';continue;
+    }
+    let url;
+    try{url=new URL(item.url,location.href);}catch(e){continue;}
+    if(!['https:','http:','file:'].includes(url.protocol))continue;
+    link.href=url.href;
+    link.setAttribute('download','');
+    link.removeAttribute('aria-disabled');
+    link.textContent=labels[platform];
+    meta.textContent='V'+data.version+(item.size?' • '+item.size:'')+(item.sha256?' • SHA-256: '+item.sha256:'');
+  }
+})();
+</script></body></html>
